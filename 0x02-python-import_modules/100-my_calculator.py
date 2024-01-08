@@ -1,30 +1,47 @@
 #!/usr/bin/python3
-from calculator_1 import add, sub, mul, div
-from sys import argv
 
 if __name__ == "__main__":
-    if len(argv) != 4:
-        print("Usage:", argv[0], "<a> <operator> <b>")
+    from calculator_1 import add, sub, mul, div 
+    import sys
+
+    if len(sys.argv) - 1 != 3:
         print("Usage: ./100-my_calculator.py <a> <operator> <b>")
-        quit(1)
+        sys.exit(1)
 
-    operators = ['+', '-', '*', '/']
-
-    if argv[2] not in operators:
+    op = {"+": add, "-": sub, "*": mul, "/": div}
+    if sys.argv[2] not in list(op.keys()):
         print("Unknown operator. Available operators: +, -, * and /")
-        quit(1)
+        sys.exit(1)
 
-    a = int(argv[1])
-    b = int(argv[3])
+    a = int(sys.argv[1])
+    b = int(sys.argv[3])
+    print("{} {} {} = {}".format(a, sys.argv[2], b, op[sys.argv[2]](a, b)))
 
-    if argv[2] == "+":
-        print("{} {} {} {} {}".format(a, argv[2], b, "=", add(a, b)))
-    elif argv[2] == "-":
-        print("{} {} {} {} {}".format(a, argv[2], b, "=", sub(a, b)))
-    elif argv[2] == "*":
-        print("{} {} {} {} {}".format(a, argv[2], b, "=", mul(a, b)))
-    else:
-        print("{} {} {} {} {}".format(a, argv[2], b, "=", div(a, b)))
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
